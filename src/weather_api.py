@@ -1,5 +1,6 @@
 import requests
-from src.config import WEATHER_API_KEY, UNITS, LANGUAGE
+import os
+from src.config import UNITS, LANGUAGE
 
 class WeatherClient:
     def __init__(self):
@@ -8,7 +9,7 @@ class WeatherClient:
     def get_current_weather(self,city):
         params = {
             "q": city,
-            "appid": WEATHER_API_KEY,
+            "appid": os.environ.get("WEATHER_API_KEY"),
             "units": UNITS,
             "lang": LANGUAGE
         }
